@@ -1,0 +1,76 @@
+.tree-view {
+    padding-left:0;
+    margin:0;
+}
+.tree-view .expanded > .tree-view{
+    display:block;
+}
+
+.tree-view .tree-view {
+    display:none;
+}
+
+.tree-view li
+{
+    list-style: none;
+    position:relative;
+    line-height:1.5;
+    white-space: nowrap;
+    padding-left:20px;
+}
+.tree-view .item{
+    position: relative;
+    border: 1px dashed rgba(0,0,0,0);
+    padding: 0 3px 0 22px;
+    margin: 0 -6px;
+    cursor:pointer;
+    text-shadow: 0 0 5px rgba(255,255,255,0);
+
+}
+
+.tree-view .item:hover{
+    text-shadow: 0 0 5px rgba(255,255,255,0.4);
+
+}
+
+
+.tree-view .item.selected{
+    border: 1px dashed rgba(255, 255, 255, 0.5);
+    background-color: rgba(0, 0, 0, 0.1);
+    text-shadow: 0 0 5px rgba(255,255,255,1);
+
+}
+
+.tree-view .expander{
+    background: url(../images/toggle-small-expand.png) 0px 3px no-repeat;
+    display: inline-block;
+    width:20px;
+    position: absolute;
+    left:0;
+    min-height: 1em;
+
+}
+
+.tree-view .expanded > .expander{
+    background: url(../images/toggle-small.png) 0px 3px no-repeat;
+}
+
+.tree-view .file-type{
+    display: inline-block;
+    width:20px;
+    height:1em;
+    position:absolute;
+    top:0;
+    bottom:0;
+    margin:auto;
+    left:2px;
+}
+
+.tree-view .folder{
+    background: url(../images/folder.png) 0px 50% no-repeat;
+}
+.tree-view .file{
+    background: url(../images/document.png) 0px 50% no-repeat;
+}
+
+

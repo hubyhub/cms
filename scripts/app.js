@@ -1,0 +1,2 @@
+/* recommended */
+angular.module('cms', [ ]);

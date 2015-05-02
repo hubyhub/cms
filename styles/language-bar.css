@@ -1,0 +1,21 @@
+#language-bar {
+    font-size:0;
+    position:absolute;
+    bottom:10px;
+    right:10px;
+}
+
+#language-bar span{
+    border:1px solid white;
+    background-color:rgb(106, 161, 68);
+    border-radius:3px;
+    display:inline-block;
+    padding:3px 0;
+    font-size:12px;
+    width:25px;
+    text-align:center;
+    margin-left:1px;
+}
+#language-bar span.selected{
+    font-weight: bold;
+}

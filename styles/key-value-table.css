@@ -1,0 +1,16 @@
+.key-value{
+    width: 100%;
+    min-width: 400px;
+    max-width: 700px;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+.key-value td:first-child{
+    width:150px;
+}
+
+.key-value input{
+    width:100%;
+}
+

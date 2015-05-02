@@ -1,0 +1,65 @@
+{
+    "header": {
+      "name": "header",
+      "content" : {
+        "home" : "https://www.home.com",
+        "settings" : "https://www.settings.com",
+        "login" : "https://www.login.com"
+      },
+      "children" : {
+        "links": {
+          "name" : "links",
+          "content" : {
+            "home" : "https://www.home.com",
+            "login" : "https://www.login.com"
+          }
+        }
+      }
+    },
+    "content": {
+      "name": "content",
+      "content" : {
+        "home" : "https://www.home.com",
+        "login" : "https://www.login.com"
+      },
+      "children" : {
+        "links": {
+          "name" : "mycontent",
+          "content" : {
+            "linasdf" : "link"
+          },
+          "children" : {
+            "links": {
+              "name" : "asdf",
+              "messages" : {
+                "home" : "https://www.home.com",
+                "css" : "home-icon"
+
+              }
+            }
+          }
+        }
+      }
+    },
+    "footer": {
+      "name": "footer",
+      "content" : {
+
+        "settings" : "https://www.settings.com",
+        "login" : "https://www.login.com"
+      },
+      "children": {}
+    },
+    "links":{
+      "name": "links",
+      "content" : {
+        "mylink" : "base",
+
+        "icon" : "cool-icon"
+      },
+      "children": {}
+    }
+}
+
+
+

@@ -1,0 +1,13 @@
+* GIT + Branching
+* interne representation als GUID + name als attribute.
+* beim rausrendern name als key. also root.home.whatever.
+
+* table fehler... bei weiß i ned was...  :(
+
+* form speichert bei ENTER
+* json wird upgedated.
+* internes json wird gespeichert? zunächst file. später db?
+* exteren json wird erzeugt. file? db?
+* rename von nodes möglich
+* copy paste save esc  per key
+* pristine
