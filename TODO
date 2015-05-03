@@ -1,8 +1,6 @@
-* GIT + Branching
+
 * interne representation als GUID + name als attribute.
 * beim rausrendern name als key. also root.home.whatever.
-
-* table fehler... bei weiß i ned was...  :(
 
 * form speichert bei ENTER
 * json wird upgedated.

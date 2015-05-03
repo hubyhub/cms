@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="styles/layout.css">
     <link rel="stylesheet" href="styles/key-value-table.css">
     <link rel="stylesheet" href="styles/language-bar.css">
+    <link rel="stylesheet" href="styles/context-menu.css">
 
 
   </head>
@@ -63,10 +64,12 @@
     <script src="scripts/lib/angular-1.3.14.js"></script>
     <script src="scripts/app.js"></script>
     <script>angular.module('cms').value('ContentTree', JSON.parse(<?= $json ?>) );</script>
+    <script src="scripts/directives/rightClick.js"></script>
     <script src="scripts/TreeView/TreeViewCtrl.js"></script>
     <script src="scripts/services/ContentService.js"></script>
     <script src="scripts/TableView/TableViewCtrl.js"></script>
     <script src="scripts/TreeView/TreeView.js"></script>
+
 
 
 </body>

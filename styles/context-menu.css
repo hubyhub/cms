@@ -1,0 +1,26 @@
+
+#context-menu {
+    position: absolute;
+    top:1em;
+    left: 55px;
+    background: #ffffff;
+    border: 1px solid #6F6F6F;
+    display: inline-block;
+    z-index: 100;
+    color: #494949;
+    font-family: sans-serif;
+}
+
+#context-menu > span {
+    display: block;
+    padding: 6px 10px;
+    font-size: 12px;
+    border-bottom: 1px solid #DADADA;
+    min-width: 12em;
+    cursor:pointer;
+}
+
+#context-menu > span:hover{
+    background-color:#F2F2F2;
+
+}
