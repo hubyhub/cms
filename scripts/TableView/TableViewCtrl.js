@@ -6,10 +6,10 @@ angular.module('cms').controller('TableViewCtrl', ['ContentService', function(Co
         self.table = ContentService.getTable();
     }
 
-    self.addKey = function(){
-        debugger;
+    self.addKey = function(){                
         console.log(self.table);
     }
+    
 
     self.submit = function () {
               console.log("submit");

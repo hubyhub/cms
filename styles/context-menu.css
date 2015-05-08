@@ -11,6 +11,10 @@
     font-family: sans-serif;
 }
 
+#context-menu:focus{
+    outline: 0px solid transparent;
+}
+
 #context-menu > span {
     display: block;
     padding: 6px 10px;

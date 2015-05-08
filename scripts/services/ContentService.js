@@ -1,5 +1,5 @@
 
-angular.module('cms').factory('ContentService',['ContentTree', function (ContentTree){
+angular.module('cms').factory('ContentService',['ContentTree', '$timeout', function (ContentTree, $timeout){
 
         var currentTable = {};
         var currentNode  = {};
@@ -32,9 +32,11 @@ angular.module('cms').factory('ContentService',['ContentTree', function (Content
                 currentNode.selected = true;
                 currentTable.content = currentNode.item.content;
             },
-            addNode : function(node){
-                debugger;
-                node.new = nodeTemplate;
+            addNode : function(node, name){
+           
+                nodeTemplate.name = name;
+                //node.item.children[name] = nodeTemplate;
+                node.update(nodeTemplate);
             },
             getTable : function(){
                 return currentTable;

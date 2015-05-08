@@ -12,7 +12,8 @@
           "content" : {
             "home" : "https://www.home.com",
             "login" : "https://www.login.com"
-          }
+          },
+          "children":{}
         }
       }
     },
@@ -31,11 +32,11 @@
           "children" : {
             "links": {
               "name" : "asdf",
-              "messages" : {
+              "content" : {
                 "home" : "https://www.home.com",
                 "css" : "home-icon"
-
-              }
+              },
+              "children":{}
             }
           }
         }
