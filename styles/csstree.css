@@ -73,4 +73,13 @@
     background: url(../images/document.png) 0px 50% no-repeat;
 }
 
-
+#rename-field{        
+    position: absolute;
+    margin: 0;
+    padding: 0 5px;
+    border: none;  
+    top: 0;
+    left: 22px;
+    min-width: 150px;    
+    display: block;
+}

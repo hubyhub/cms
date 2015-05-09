@@ -67,6 +67,7 @@
     <script src="scripts/directives/rightClick.js"></script>
     <script src="scripts/TreeView/TreeViewCtrl.js"></script>
     <script src="scripts/services/ContentService.js"></script>
+    <script src="scripts/services/GUIDService.js"></script>
     <script src="scripts/TableView/TableViewCtrl.js"></script>
     <script src="scripts/TreeView/TreeView.js"></script>
 

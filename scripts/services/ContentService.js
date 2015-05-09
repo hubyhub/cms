@@ -3,6 +3,8 @@ angular.module('cms').factory('ContentService',['ContentTree', '$timeout', funct
 
         var currentTable = {};
         var currentNode  = {};
+        var thisScope;
+        var renameNode;
 
         var nodeTemplate =
         {
@@ -14,6 +16,7 @@ angular.module('cms').factory('ContentService',['ContentTree', '$timeout', funct
         // Default tree has a root-only
         var tree = {
             "root": {
+                "id":"00000000-0000-0000-0000-000000000000",
                 "name": "Root",
                 "content": {},
                 "children": {}
@@ -25,24 +28,30 @@ angular.module('cms').factory('ContentService',['ContentTree', '$timeout', funct
             selectNode : function(node){
 
                 if(currentNode){
-                    currentNode.selected = false;
+                    currentNode.selected = false; //der alte Node
                 }
 
                 currentNode = node;
                 currentNode.selected = true;
                 currentTable.content = currentNode.item.content;
             },
-            addNode : function(node, name){
-           
-                nodeTemplate.name = name;
-                //node.item.children[name] = nodeTemplate;
-                node.update(nodeTemplate);
+            setRenameNode : function(node){
+                renameNode = node;
+            },
+            getRenameNode : function(){
+                return renameNode;
             },
             getTable : function(){
                 return currentTable;
             },
             getTree : function(){
                 return tree;
+            },
+            saveScope : function(myScope){
+                thisScope = myScope;
+            },
+            getScope : function(){
+                return thisScope;
             }
         };
 

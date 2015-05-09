@@ -1,5 +1,6 @@
 {
     "header": {
+      "id": "bca53a91-0434-1675-a56e-2f7176116e5b",
       "name": "header",
       "content" : {
         "home" : "https://www.home.com",
@@ -8,6 +9,7 @@
       },
       "children" : {
         "links": {
+          "id": "cca53a91-0434-1675-a56e-2f7176116e5b",
           "name" : "links",
           "content" : {
             "home" : "https://www.home.com",
@@ -18,6 +20,7 @@
       }
     },
     "content": {
+      "id": "bcb53a91-0434-1675-a56e-2f7176116e5b",
       "name": "content",
       "content" : {
         "home" : "https://www.home.com",
@@ -25,12 +28,14 @@
       },
       "children" : {
         "links": {
-          "name" : "mycontent",
-          "content" : {
-            "linasdf" : "link"
-          },
+            "id": "bca53a91-0434-1675-a56e-2f7176116e5b",
+            "name" : "mycontent",
+            "content" : {
+                "linasdf" : "link"
+            },
           "children" : {
             "links": {
+              "id": "bca53a91-0434-1675-a56e-2f717611632b",
               "name" : "asdf",
               "content" : {
                 "home" : "https://www.home.com",
@@ -43,22 +48,22 @@
       }
     },
     "footer": {
-      "name": "footer",
-      "content" : {
-
-        "settings" : "https://www.settings.com",
-        "login" : "https://www.login.com"
+        "id": "bca53a6a-0434-1675-a56e-2f7176116e5b",
+        "name": "footer",
+        "content" : {
+            "settings" : "https://www.settings.com",
+            "login" : "https://www.login.com"
       },
       "children": {}
     },
     "links":{
-      "name": "links",
-      "content" : {
-        "mylink" : "base",
-
-        "icon" : "cool-icon"
-      },
-      "children": {}
+        "id": "bca53a91-1434-1675-a56e-2f7176116e5b",
+        "name": "links",
+        "content" : {
+            "mylink" : "base",
+            "icon" : "cool-icon"
+        },
+        "children": {}
     }
 }
 
