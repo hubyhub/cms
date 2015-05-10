@@ -28,7 +28,7 @@ angular.module('cms')
                 scope.selected = false;
                 scope.fileType = type.file;
                 scope.hasChildren = false;
-                scope.editable = false;
+                //scope.editable = false;
                 scope.newNode ={};
 
                 if (Object.prototype.toString.call(scope.item.children) === '[object Object]' && Object.keys(scope.item.children).length > 0) {
@@ -57,26 +57,36 @@ angular.module('cms')
                     });
                 };
                 
-                scope.saveName = function($event){                                                                             
+                scope.saveName = function(){                                                                             
                        
                     var node = ContentService.getRenameNode();                    
                     node.item.name = scope.newNode.name;                
                     scope.renameField.remove();                     
                     scope.newNode.name ="";
+                    scope.renameField = undefined;
                     //TODO REMOVE EVENTLISTENER! also on contextmenu                        
                    ///$event.keyCode == 13 && 113
+                    console.log(scope.renameField);
+                }
+                
+                scope.cancelRename = function(){                                                                             
+                       
                 }
                 
                 
                 ///$event.keyCode == 13 && 113
                 scope.showRenameField = function (node) {
-                    
+                    if(!node.renameField){
+                    console.log(scope.renameField);
                     // gets the new DOM-NODE
                     var el = GUIDService.getAngularElementById(node.item.id);
-                   
-                    // creates input field
-                    scope.renameField = $compile('<input type="text" id="rename-field" ng-model="newNode.name" ng-keyup="$event.keyCode == 13 && saveName($event)" ng-blur="saveName()" placeholder="Name of the Node" />')(scope);
-                    el.append(scope.renameField);
+                    //debugger;
+                    scope.newNode.name = node.item.name;
+                    
+                            // creates input field
+                    
+                        scope.renameField = $compile('<input type="text" id="rename-field"  ng-model="newNode.name" ng-keyup="$event.keyCode == 13 && saveName($event)" ng-blur="saveName()" placeholder="Name of the Node" />')(scope);
+                        el.append(scope.renameField);
                     
                     // saves the node, that we want to rename
                     ContentService.setRenameNode(node);
@@ -85,12 +95,12 @@ angular.module('cms')
                     document.getElementById("rename-field").focus();
                     
                     //set "rename-node"
+                  
                    
-                   
-                   
+                    }
                     // add input-field
                                        
-               
+                    console.log(scope.renameField);
                 };
                 
                 // Selects a Node and hightlights it
@@ -148,7 +158,7 @@ angular.module('cms')
                 };
 
             },
-            template: '<li ng-class="{expanded: expanded}"><i class="expander" ng-click="toggleFolder()" ng-if="hasChildren" ></i><span  id="{{item.id}}" class="item" tabindex="-1" ng-class="{expanded: expanded, selected : selected, editable: editable}" ng-click="selectNode()"   ng-right-click="showContextMenu()"><i class="file-type" ng-class="fileType"></i><span class="item-name"  >{{item.name}}</span></span></li>',
+            template: '<li ng-class="{expanded: expanded}"><i class="expander" ng-click="toggleFolder()" ng-if="hasChildren" ></i><span  id="{{item.id}}" class="item" tabindex="-1" ng-class="{expanded: expanded, selected : selected}" ng-click="selectNode()"   ng-right-click="showContextMenu()"><i class="file-type" ng-class="fileType"></i><span class="item-name"  >{{item.name}}</span></span></li>',
             controllerAs: 'itemCtrl'           
         };
 
