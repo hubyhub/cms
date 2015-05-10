@@ -35,6 +35,9 @@ angular.module('cms').factory('ContentService',['ContentTree', '$timeout', funct
                 currentNode.selected = true;
                 currentTable.content = currentNode.item.content;
             },
+            getSelectedNode : function(){
+              return currentNode;  
+            },
             setRenameNode : function(node){
                 renameNode = node;
             },

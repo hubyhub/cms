@@ -3,7 +3,7 @@
     $json = json_encode(file_get_contents($file));
 ?>
 <!doctype html>
-<html ng-app="cms">
+<html ng-app="cms"  >
   <head>
     <meta charset="utf-8">
     <title>Superlink</title>
@@ -20,7 +20,7 @@
 
 
   </head>
-  <body>
+  <body ng-controller="KeyboardCtrl" ng-keydown=" keyPress($event);" >
     <header>JsonCMS
         <div id="language-bar">
             <span class="selected">EN</span>
@@ -29,10 +29,10 @@
             <span>ES</span>
         </div>
     </header>
-    <main>
-        <div class="column-layout">
+    <main>        
+        <div class="column-layout" >
 
-            <div class="column">
+            <div class="column" >
 
                     <div ng-controller="TreeViewCtrl as tree" >
                         <tree-view tree="tree.content"></tree-view>
@@ -64,14 +64,13 @@
     <script src="scripts/lib/angular-1.3.14.js"></script>
     <script src="scripts/app.js"></script>
     <script>angular.module('cms').value('ContentTree', JSON.parse(<?= $json ?>) );</script>
-    <script src="scripts/directives/rightClick.js"></script>
+    <script src="scripts/Directives/RightClick.js"></script>
     <script src="scripts/TreeView/TreeViewCtrl.js"></script>
-    <script src="scripts/services/ContentService.js"></script>
-    <script src="scripts/services/GUIDService.js"></script>
+    <script src="scripts/Services/ContentService.js"></script>
+    <script src="scripts/Keyboard/KeyboardCtrl.js"></script>
+    <script src="scripts/Services/GUIDService.js"></script>
     <script src="scripts/TableView/TableViewCtrl.js"></script>
     <script src="scripts/TreeView/TreeView.js"></script>
-
-
 
 </body>
 </html>
