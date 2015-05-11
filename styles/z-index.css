@@ -1,0 +1,6 @@
+#overlay {
+  z-index: 100;
+}
+#rename-form {
+  z-index: 101;
+}

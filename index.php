@@ -17,6 +17,9 @@
     <link rel="stylesheet" href="styles/key-value-table.css">
     <link rel="stylesheet" href="styles/language-bar.css">
     <link rel="stylesheet" href="styles/context-menu.css">
+    <link rel="stylesheet" href="styles/overlay.css">
+    <link rel="stylesheet" href="styles/rename.css">
+    <link rel="stylesheet" href="styles/z-index.css">
 
 
   </head>
@@ -59,12 +62,15 @@
     </div>
 
     </main>
-
-
+    
+    <overlay></overlay>
+    
     <script src="scripts/lib/angular-1.3.14.js"></script>
     <script src="scripts/app.js"></script>
     <script>angular.module('cms').value('ContentTree', JSON.parse(<?= $json ?>) );</script>
     <script src="scripts/Directives/RightClick.js"></script>
+    <script src="scripts/Overlay/OverlayService.js"></script>
+    <script src="scripts/Overlay/OverlayDirective.js"></script>    
     <script src="scripts/TreeView/TreeViewCtrl.js"></script>
     <script src="scripts/Services/ContentService.js"></script>
     <script src="scripts/Keyboard/KeyboardCtrl.js"></script>

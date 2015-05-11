@@ -10,7 +10,7 @@ angular.module('cms')
         };
 
     }])
-    .directive('treeItem', ["$compile", "$timeout", "ContentService","GUIDService",function ($compile,$timeout, ContentService, GUIDService) {
+    .directive('treeItem', ["$compile", "$timeout", "ContentService", "OverlayService","GUIDService",function ($compile,$timeout, ContentService, OverlayService, GUIDService) {
 
         var type = {"file": "file", "folder": "folder"};
         return {
@@ -59,48 +59,54 @@ angular.module('cms')
                 
                 scope.saveName = function(){                                                                             
                        
+                    // gets the reference to the node we want to rename
                     var node = ContentService.getRenameNode();                    
+                    
+                    OverlayService.setVisibility(false);                    
                     node.item.name = scope.newNode.name;                
-                    scope.renameField.remove();                     
-                    scope.newNode.name ="";
+                    scope.newNode.name = "";                    
+                    scope.renameField.remove(); 
                     scope.renameField = undefined;
+                    
                     //TODO REMOVE EVENTLISTENER! also on contextmenu                        
                    ///$event.keyCode == 13 && 113
-                    console.log(scope.renameField);
+                    
                 }
                 
-                scope.cancelRename = function(){                                                                             
-                       
+                scope.cancelRename = function(){   
+                    // gets the reference to the node we want to rename
+                    var node = ContentService.getRenameNode(); 
+                    OverlayService.setVisibility(false);
+                    // TODO: "ON ESC"-> DONT SAVE. JUST REMOVE FORM-ELEMEMT and reset scope/node 
+                    // TODO: CLEANUP: node vs. scope in showRenameField!! und cancelRename usw!
+                    
+                    scope.newNode.name = "";
+                    scope.renameField.remove();
+                    scope.renameField = undefined; 
                 }
                 
                 
                 ///$event.keyCode == 13 && 113
                 scope.showRenameField = function (node) {
-                    if(!node.renameField){
-                    console.log(scope.renameField);
-                    // gets the new DOM-NODE
-                    var el = GUIDService.getAngularElementById(node.item.id);
-                    //debugger;
-                    scope.newNode.name = node.item.name;
-                    
-                            // creates input field
-                    
-                        scope.renameField = $compile('<input type="text" id="rename-field"  ng-model="newNode.name" ng-keyup="$event.keyCode == 13 && saveName($event)" ng-blur="saveName()" placeholder="Name of the Node" />')(scope);
+                    if(!node.renameField){                   
+                        // gets the new DOM-NODE
+                        var el = GUIDService.getAngularElementById(node.item.id);
+                       
+                        // show current node-name in the rename-textfield
+                        scope.newNode.name = node.item.name;
+ 
+                        // creates input field                    
+                        scope.renameField = $compile('<div id="rename-form"><form name="renameForm" novalidate ng-submit="renameForm.$valid && saveName()" ><input type="text" id="rename-field" name="renameText" ng-blur="renameForm.$valid && saveName()"  ng-model="newNode.name" ng-minlength="3" ng-required="true" placeholder="Name of the Node" /></form></div>')(scope);
                         el.append(scope.renameField);
-                    
-                    // saves the node, that we want to rename
-                    ContentService.setRenameNode(node);
-                    
-                    //sets focus on input field
-                    document.getElementById("rename-field").focus();
-                    
-                    //set "rename-node"
-                  
-                   
+                        
+                        OverlayService.setVisibility(true);
+                        
+                        // saves a reference to the node, that we want to rename
+                        ContentService.setRenameNode(node);
+
+                        //sets focus on input field
+                        document.getElementById("rename-field").focus();                   
                     }
-                    // add input-field
-                                       
-                    console.log(scope.renameField);
                 };
                 
                 // Selects a Node and hightlights it
@@ -110,8 +116,7 @@ angular.module('cms')
                     }
                     else{
                         ContentService.selectNode(scope);
-                    }                    
-                    
+                    }
                 };
                                               
                 // expands & collapses the folder
@@ -158,7 +163,7 @@ angular.module('cms')
                 };
 
             },
-            template: '<li ng-class="{expanded: expanded}"><i class="expander" ng-click="toggleFolder()" ng-if="hasChildren" ></i><span  id="{{item.id}}" class="item" tabindex="-1" ng-class="{expanded: expanded, selected : selected}" ng-click="selectNode()"   ng-right-click="showContextMenu()"><i class="file-type" ng-class="fileType"></i><span class="item-name"  >{{item.name}}</span></span></li>',
+            template: '<li ng-class="{expanded: expanded}"><i class="expander" ng-click="toggleFolder()" ng-if="hasChildren" ></i><span  id="{{item.id}}" class="item" tabindex="1" ng-class="{expanded: expanded, selected : selected}" ng-click="selectNode()"   ng-right-click="showContextMenu()"><i class="file-type" ng-class="fileType"></i><span class="item-name"  >{{item.name}}</span></span></li>',
             controllerAs: 'itemCtrl'           
         };
 

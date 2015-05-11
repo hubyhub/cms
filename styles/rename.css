@@ -1,0 +1,14 @@
+
+#rename-form{        
+    position: absolute;
+    top: 0;
+    left: 22px;    
+}
+
+#rename-form input
+{
+    border: none;  
+    padding: 0 5px;    
+    min-width: 150px;    
+    display: block;
+}
