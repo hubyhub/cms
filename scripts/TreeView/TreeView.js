@@ -61,6 +61,7 @@ angular.module('cms')
                        
                     // gets the reference to the node we want to rename
                     var node = ContentService.getRenameNode();                    
+                    var el = document.getElementById(node.item.id);
                     
                     OverlayService.setVisibility(false);                    
                     node.item.name = scope.newNode.name;                
@@ -68,6 +69,7 @@ angular.module('cms')
                     scope.renameField.remove(); 
                     scope.renameField = undefined;
                     
+                    el.focus();
                     //TODO REMOVE EVENTLISTENER! also on contextmenu                        
                    ///$event.keyCode == 13 && 113
                     
@@ -75,14 +77,21 @@ angular.module('cms')
                 
                 scope.cancelRename = function(){   
                     // gets the reference to the node we want to rename
+                    
                     var node = ContentService.getRenameNode(); 
-                    OverlayService.setVisibility(false);
-                    // TODO: "ON ESC"-> DONT SAVE. JUST REMOVE FORM-ELEMEMT and reset scope/node 
-                    // TODO: CLEANUP: node vs. scope in showRenameField!! und cancelRename usw!
+                    var el = document.getElementById(node.item.id);
+
+                    OverlayService.setVisibility(false);                   
                     
                     scope.newNode.name = "";
                     scope.renameField.remove();
                     scope.renameField = undefined; 
+                    // cleanup & refactoring of new-node creation
+                    if(!node.item.name || node.item.name.trim() === ""){
+                        node.item.name= "New Item";
+                    }
+                    
+                    el.focus();
                 }
                 
                 

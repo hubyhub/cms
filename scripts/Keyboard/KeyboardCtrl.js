@@ -20,10 +20,11 @@ angular.module('cms')
                         return;
                     
                     case Key.ESC: 
-                        // if rename-field exists, close rename field without saving
-                        if(document.getElementById('rename-field')){
-                            
-                            
+                     var el = document.getElementById('rename-field');
+                    // if rename-field exists, close rename field without saving
+                        if(el){
+                            var scope = angular.element(el).scope();
+                            scope.cancelRename();
                         }
                         
                         return;    
