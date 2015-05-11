@@ -1,8 +1,7 @@
 
 angular.module('cms').factory('ContentService',['ContentTree', '$timeout', function (ContentTree, $timeout){
 
-        var currentTable = {};
-        var currentNode  = {};
+        var currentTable = {};       
         var thisScope;
         var renameNode;
 
@@ -26,18 +25,9 @@ angular.module('cms').factory('ContentService',['ContentTree', '$timeout', funct
 
         return {
             selectNode : function(node){
-
-                if(currentNode){
-                    currentNode.selected = false; //der alte Node
-                }
-
-                currentNode = node;
-                currentNode.selected = true;
-                currentTable.content = currentNode.item.content;
+                currentTable.content = node.item.content;
             },
-            getSelectedNode : function(){
-              return currentNode;  
-            },
+           
             setRenameNode : function(node){
                 renameNode = node;
             },

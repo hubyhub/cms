@@ -49,7 +49,7 @@ angular.module('cms')
 
                 // Show and hide Context-Menu
                 scope.showContextMenu = function () {
-                    scope.contextMenu = $compile('<div id="context-menu" tabindex="-1" ><span ng-click="addNode()">New Node</span><span>Copy</span><span>Cut</span><span>Delete</span></div>')(scope);
+                    scope.contextMenu = $compile('<div id="context-menu" tabindex="-1" ><span ng-click="addNode()">New Node</span><span ng-click="showRenameField()">Rename</span><span>Copy</span><span>Cut</span><span>Delete</span></div>')(scope);
                     element.append(scope.contextMenu);
                     document.getElementById("context-menu").focus();
                     scope.contextMenu.on('blur', function () {
@@ -97,6 +97,9 @@ angular.module('cms')
                 
                 ///$event.keyCode == 13 && 113
                 scope.showRenameField = function (node) {
+                    if(!node){
+                        node = scope;
+                    }
                     if(!node.renameField){                   
                         // gets the new DOM-NODE
                         var el = GUIDService.getAngularElementById(node.item.id);
@@ -146,6 +149,9 @@ angular.module('cms')
                     }, 0);
                     
                 };
+                
+               
+                
                 
                 // Helper function.. maybe put it into addNode function 
                 scope.createNodeAndAppendToDOM = function () {
