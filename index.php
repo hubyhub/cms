@@ -23,7 +23,7 @@
 
 
   </head>
-  <body ng-controller="KeyboardCtrl" ng-keydown=" keyPress($event);" >
+  <body ng-controller="KeyboardCtrl" ng-keydown="keyPress($event);" ng-keyup="keyUp($event);" >
     <header>JsonCMS
         <div id="language-bar">
             <span class="selected">EN</span>
@@ -63,20 +63,21 @@
 
     </main>
     
-    <overlay></overlay>
+    <overlay></overlay>    
     
     <script src="scripts/lib/angular-1.3.14.js"></script>
+    
     <script src="scripts/app.js"></script>
     <script>angular.module('cms').value('ContentTree', JSON.parse(<?= $json ?>) );</script>
     <script src="scripts/Directives/RightClick.js"></script>
     <script src="scripts/Overlay/OverlayService.js"></script>
     <script src="scripts/Overlay/OverlayDirective.js"></script>    
     <script src="scripts/TreeView/TreeViewCtrl.js"></script>
-    <script src="scripts/Services/ContentService.js"></script>
+    <script src="scripts/TreeView/TreeService.js"></script>
     <script src="scripts/Keyboard/KeyboardCtrl.js"></script>
     <script src="scripts/Services/GUIDService.js"></script>
     <script src="scripts/TableView/TableViewCtrl.js"></script>
-    <script src="scripts/TreeView/TreeView.js"></script>
+    <script src="scripts/TreeView/TreeViewDirective.js"></script>
 
 </body>
 </html>

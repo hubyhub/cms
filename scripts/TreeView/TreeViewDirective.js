@@ -30,26 +30,26 @@ angular.module('cms')
                 scope.hasChildren = false;
                 //scope.editable = false;
                 scope.newNode ={};
-
-                if (Object.prototype.toString.call(scope.item.children) === '[object Object]' && Object.keys(scope.item.children).length > 0) {
-                    scope.fileType = type.folder;
-                    scope.hasChildren = true;
-                    compileNode();
-                }
-
-                function compileNode() {
+                scope.compileNode = function() {
                     var compiled = $compile("<tree-view tree='item.children'></tree-view>")(scope, function (cloned, scope) {                        
                         element.append(cloned);                             
                     });
                     
                 }
                 
+                if (Object.prototype.toString.call(scope.item.children) === '[object Object]' && Object.keys(scope.item.children).length > 0) {
+                    scope.fileType = type.folder;
+                    scope.hasChildren = true;
+                    scope.compileNode();
+                }
+
+              
 
 
 
                 // Show and hide Context-Menu
                 scope.showContextMenu = function () {
-                    scope.contextMenu = $compile('<div id="context-menu" tabindex="-1" ><span ng-click="addNode()">New Node</span><span ng-click="showRenameField()">Rename</span><span>Copy</span><span>Cut</span><span>Delete</span></div>')(scope);
+                    scope.contextMenu = $compile('<div id="context-menu" tabindex="-1" ><span ng-click="addNode()">New Node</span><span ng-click="showRenameField()">Rename</span><span>Copy</span><span>Cut</span><span ng-click="deleteNode()">Delete Node</span></div>')(scope);
                     element.append(scope.contextMenu);
                     document.getElementById("context-menu").focus();
                     scope.contextMenu.on('blur', function () {
@@ -76,8 +76,6 @@ angular.module('cms')
                 }
                 
                 scope.cancelRename = function(){   
-                    // gets the reference to the node we want to rename
-                    
                     var node = ContentService.getRenameNode(); 
                     var el = document.getElementById(node.item.id);
 
@@ -94,6 +92,20 @@ angular.module('cms')
                     el.focus();
                 }
                 
+                // update view after deleting
+                scope.updateFileFolder = function(){
+                    
+                    if(scope.item.id !== "00000000-0000-0000-0000-000000000000"){
+                        if(scope.item.children.length>0){                            
+                            scope.fileType = type.folder;
+                            scope.hasChildren = true;
+                        }
+                        else{                        
+                            scope.fileType = type.file;
+                            scope.hasChildren = false;
+                        }
+                    }  
+                }
                 
                 ///$event.keyCode == 13 && 113
                 scope.showRenameField = function (node) {
@@ -138,44 +150,34 @@ angular.module('cms')
                 
                 // creates a new Node and appends it to JSON-object and DOM
                 scope.addNode = function () {                   
-                    scope.contextMenu.remove();
-                    scope.expanded = true;
-                    var id = scope.createNodeAndAppendToDOM();   
-                    // Wait until apply and digest has ended
-                    $timeout(function() {
-                        var node = GUIDService.getScopeById(id);
-                        scope.selectNode(node);
-                        scope.showRenameField(node);
-                    }, 0);
-                    
+                    ContentService.addNode(scope);                    
                 };
                 
-               
-                
-                
-                // Helper function.. maybe put it into addNode function 
-                scope.createNodeAndAppendToDOM = function () {
-                    var isFile = true;
-                    var guid = GUIDService.getGuid();
-                    if(scope.hasChildren){
-                        isFile = false;
+                // Removes Node
+                scope.deleteNode = function () {          
+                    if(scope.contextMenu){
+                        scope.contextMenu.remove();
                     }
-
-                    scope.fileType = type.folder;
-                    scope.hasChildren = true;                     
-                    scope.item.children[guid] ={
-                        "children" : {},
-                        "content": {},
-                        "name": "",
-                        "id":guid
-                    };
-
-                    if(isFile){
-                       compileNode();
-                    }
-                    
-                    return guid;
+                    ContentService.deleteNode(scope);
                 };
+                
+                
+                scope.copyNode = function () {          
+                    if(scope.contextMenu){
+                        scope.contextMenu.remove();
+                    }
+                    ContentService.copyNode(scope);
+                };
+                
+                scope.pasteNode = function () {          
+                    if(scope.contextMenu){
+                        scope.contextMenu.remove();
+                    }
+                    ContentService.pasteNode(scope);
+                };
+                
+                
+                
 
             },
             template: '<li ng-class="{expanded: expanded}"><i class="expander" ng-click="toggleFolder()" ng-if="hasChildren" ></i><span  id="{{item.id}}" class="item" tabindex="1" ng-class="{expanded: expanded, selected : selected}" ng-click="selectNode()"   ng-right-click="showContextMenu()"><i class="file-type" ng-class="fileType"></i><span class="item-name"  >{{item.name}}</span></span></li>',

@@ -3,7 +3,7 @@ angular.module('cms').directive('ngRightClick', function($parse) {
         var fn = $parse(attrs.ngRightClick);
         element.bind('contextmenu', function(event) {
             scope.$apply(function() {
-                //event.preventDefault();
+                event.preventDefault();
                 fn(scope, {$event:event});
             });
 

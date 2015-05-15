@@ -1,64 +1,71 @@
 {
-    "header": {
+    "bca53a91-0434-1675-a56e-247a76316e5b": {
       "id": "bca53a91-0434-1675-a56e-247a76316e5b",
       "name": "header",
-      "content" : {
-        "home" : "https://www.home.com",
-        "settings" : "https://www.settings.com",
-        "login" : "https://www.login.com"
-      },
+      "parent": "00000000-0000-0000-0000-000000000000",      
       "children" : {
-        "links": {
+        "cca53a91-0434-1675-a56e-2f7176f16e5b": {
           "id": "cca53a91-0434-1675-a56e-2f7176f16e5b",
           "name" : "links",
+          "parent" : "bca53a91-0434-1675-a56e-247a76316e5b",
           "content" : {
             "home" : "https://www.home.com",
             "login" : "https://www.login.com"
           },
           "children":{}
         }
-      }
-    },
-    "content": {
-      "id": "bcb53a91-0434-1675-a56e-2f71761f6e5b",
-      "name": "content",
+      },
       "content" : {
         "home" : "https://www.home.com",
+        "settings" : "https://www.settings.com",
         "login" : "https://www.login.com"
-      },
+      }
+    },
+    "bcb53a91-0434-1675-a56e-2f71761f6e5b": {
+      "id": "bcb53a91-0434-1675-a56e-2f71761f6e5b",
+      "name": "content",
+      "parent":"00000000-0000-0000-0000-000000000000",
       "children" : {
-        "links": {
-            "id": "bca53a91-0434-1675-a56e-2f71ab116e5b",
+        "aba53a91-0434-1675-a56e-2f71ab116e5b": {
+            "id": "aba53a91-0434-1675-a56e-2f71ab116e5b",
             "name" : "mycontent",
+            "parent" : "bcb53a91-0434-1675-a56e-2f71761f6e5b",
             "content" : {
                 "linasdf" : "link"
             },
-          "children" : {
-            "links": {
-              "id": "bca53a91-0434-1675-a46e-2f717611632b",
-              "name" : "asdf",
-              "content" : {
-                "home" : "https://www.home.com",
-                "css" : "home-icon"
-              },
-              "children":{}
+            "children" : {
+              "bca53a91-0434-1675-a46e-2f717611632b": {
+                "id": "bca53a91-0434-1675-a46e-2f717611632b",
+                "name" : "asdf",
+                "parent" :"aba53a91-0434-1675-a56e-2f71ab116e5b",
+                "content" : {
+                  "home" : "https://www.home.com",
+                  "css" : "home-icon"
+                },
+                "children":{}
+              }
             }
-          }
         }
+      },
+      "content" : {
+        "home" : "https://www.home.com",
+        "login" : "https://www.login.com"
       }
     },
-    "footer": {
+    "bca53a6a-0434-1675-a56e-243176116e5b": {
         "id": "bca53a6a-0434-1675-a56e-243176116e5b",
         "name": "footer",
+        "parent" : "00000000-0000-0000-0000-000000000000",
         "content" : {
             "settings" : "https://www.settings.com",
             "login" : "https://www.login.com"
-      },
-      "children": {}
+        },
+        "children": {}
     },
-    "links":{
+    "bca53a91-1434-1675-a56e-2f717611445b":{
         "id": "bca53a91-1434-1675-a56e-2f717611445b",
         "name": "links",
+        "parent" :"00000000-0000-0000-0000-000000000000",
         "content" : {
             "mylink" : "base",
             "icon" : "cool-icon"
